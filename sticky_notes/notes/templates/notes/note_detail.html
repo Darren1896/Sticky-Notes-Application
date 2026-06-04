@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Notes
+{% endblock title %}
+
+{% block content %}
+    <h2>
+        My Notes
+    </h2>
+    <p>
+        <strong>Title:</strong> {{ note.title }}<br>
+        <strong>Content:</strong><br>
+        {{ note.content|linebreaksbr }}
+    </p>
+    <p>
+        <strong>Created at:</strong> {{ note.created_at|date:"Y-m-d H:i" }}
+        <strong>Last edited:</strong> {{ note.last_edited|date:"Y-m-d H:i" }}
+    </p>
+    <a href="{% url 'note_update' pk=note.pk %}">Edit Note</a>
+    <a href="{% url 'note_delete' pk=note.pk %}">Delete Note</a>
+    <a href="{% url 'note_list' %}">Back to Notes List</a>
+{% endblock content %}

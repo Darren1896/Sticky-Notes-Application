@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    {% block title %}Sticky Notes{% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'static\notes\style.css' %}"/>
+</head>
+<body>
+    <header>
+        <h1>
+        {% block header %}Sticky Notes{% endblock header %}
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'note_list' %}">My Notes</a></li>
+                <li><a href="{% url 'note_create' %}">Create Note</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Content will be injected here -->
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>&copy; 2026 Sticky Notes App</p>
+    </footer>
+</body>
+</html>

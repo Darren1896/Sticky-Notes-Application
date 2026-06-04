@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    My Notes
+    {% if form.instance.pk %}
+        - Edit Note
+    {% else %}
+        - Create Note
+    {% endif %}
+    Post
+{% endblock title %}
+
+{% block content %}
+    <h2>
+    {% if form.instance.pk %}
+        Edit Note
+    {% else %}
+        Create Note
+    {% endif %}
+    Post
+    </h2>
+    <form method="post"
+          action="{% if form.instance.pk %}{% url 'note_update' pk=form.instance.pk %}{% else %}{% url 'note_create' %}{% endif %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">
+        {% if form.instance.pk %}
+            Update Note
+        {% else %}
+            Create Note
+        {% endif %}
+        </button>
+    </form>
+    <a href="{% url 'note_list' %}">Back to Notes List</a>
+{% endblock content %}
